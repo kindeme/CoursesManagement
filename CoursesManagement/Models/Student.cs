@@ -8,7 +8,7 @@ namespace CoursesManagement.Models
 {
     public class Student
     {
-        public int StudentId { get; set; }
+        public int StudentID { get; set; }
 
         [Required(ErrorMessage ="Please enter your name")]
         public string StudentName { get; set; }
@@ -18,11 +18,11 @@ namespace CoursesManagement.Models
 
         [Required(ErrorMessage ="Please enter your phone number")]
         public string StudentPhone { get; set; }
-        public DateTime DateCreated { get { return DateTime.Now; } }
+        public DateTime DateCreated { get; set; }
 
         [Required(ErrorMessage ="Please enter Adivisor Name")]
         public string AdvisorName { get; set; }
-        public int CourseId { get; set; }
-        public List<Course> CoursesRegistered { get; set; }
+        public int CourseID { get; set; }
+        public Course CoursesRegistered { get; set; }
     }
 }
