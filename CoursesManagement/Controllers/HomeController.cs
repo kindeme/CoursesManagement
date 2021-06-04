@@ -18,8 +18,9 @@ namespace CoursesManagement.Controllers
         }
         public IActionResult Index()
         {
+            var students = context.Students.OrderBy(student => student.StudentName).ToList();
            
-            return View();
+            return View(students);
         }
 
 

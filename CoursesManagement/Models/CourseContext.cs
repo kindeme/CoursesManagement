@@ -12,8 +12,8 @@ namespace CoursesManagement.Models
         {
 
         }
-        public DbSet<Course> Course { get; set; }
-        public DbSet<Student> Student { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Student> Students { get; set; }
          protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Student>().HasData(
