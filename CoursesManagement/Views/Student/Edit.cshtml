@@ -1,0 +1,41 @@
+﻿@model Student
+@{ 
+    ViewBag.Title = ViewBag.Action + "Student";
+}
+
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="StudentName">Student Name</label>
+        <input asp-for="StudentName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="StudentEmail">Student Email</label>
+        <input asp-for="StudentEmail" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="StudentPhone">Student Phone</label>
+        <input asp-for="StudentPhone" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AdvisorName">Advisor Name</label>
+        <input asp-for="AdvisorName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CourseID">Course </label>
+        <select asp-for="CourseID" class="form-control">
+            <option value="">Select a Course</option>
+            @foreach (Course course in ViewBag.Courses)
+            {
+                <option value="@course.CourseID">@course.CourseName</option>
+            }
+        </select>
+    </div>
+    <input type="hidden" asp-for="StudentID" />
+
+    <button type="submit" class="btn btn-primary">@ViewBag.action </button>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Cancel</a>
+
+</form>

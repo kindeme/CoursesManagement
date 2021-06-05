@@ -1,5 +1,6 @@
 ﻿using CoursesManagement.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace CoursesManagement.Controllers
         }
         public IActionResult Index()
         {
-            var students = context.Students.OrderBy(student => student.StudentName).ToList();
+            var students = context.Students.Include(m =>m.CoursesRegistered).OrderBy(student => student.StudentName).ToList();
            
             return View(students);
         }

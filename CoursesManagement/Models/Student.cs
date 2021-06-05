@@ -22,6 +22,8 @@ namespace CoursesManagement.Models
 
         [Required(ErrorMessage ="Please enter Adivisor Name")]
         public string AdvisorName { get; set; }
+
+        [Required(ErrorMessage ="Please enter select a course")]
         public int CourseID { get; set; }
         public Course CoursesRegistered { get; set; }
     }

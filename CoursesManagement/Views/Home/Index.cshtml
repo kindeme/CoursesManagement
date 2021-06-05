@@ -7,13 +7,16 @@
 </div>
 <table class=" table table-bordered table-striped">
     <thead>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Date of creation</th>
-        <th>Advisor Name</th>
-        <th>Courses Registered</th>
-        <th></th>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Date of creation</th>
+            <th>Advisor Name</th>
+            <th>Courses Registered</th>
+            <th></th>
+        </tr>
+      
     </thead>
     <tbody>
         @foreach(var student in Model)
@@ -24,7 +27,7 @@
                     <td>@student.StudentPhone</td>
                     <td>@student.DateCreated</td>
                     <td>@student.AdvisorName</td>
-                    <td>@student.CoursesRegistered</td>
+                    <td>@student.CoursesRegistered.CourseName</td>
                     <td>
                         <a asp-controller="Student" asp-action="Edit" asp-route-id="@student.StudentID">Edit</a>
                         <a asp-controller="Student" asp-action="Delete" asp-route-id="@student.StudentID">Delete</a>

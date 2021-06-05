@@ -19,6 +19,7 @@ namespace CoursesManagement.Controllers
         public IActionResult Add()
         {
             ViewBag.Action = "Add";
+            ViewBag.Courses = context.Courses.OrderBy(m => m.CourseName).ToList();
 
             return View("Edit", new Student());
         }
@@ -27,6 +28,7 @@ namespace CoursesManagement.Controllers
         {
             ViewBag.Action = "Edit";
             var student = context.Students.Find(id);
+            ViewBag.Courses= context.Courses.OrderBy(m => m.CourseName).ToList();
             return View(student);
         }
 
@@ -35,7 +37,7 @@ namespace CoursesManagement.Controllers
         {
             if (ModelState.IsValid)
             {
-                if(student.StudentID == 0)
+                if (student.StudentID == 0)
                 {
                     context.Students.Add(student);
                 }
@@ -49,8 +51,27 @@ namespace CoursesManagement.Controllers
             else
             {
                 ViewBag.Action = student.StudentID == 0 ? "Add" : "Edit";
+                ViewBag.Courses= context.Courses.OrderBy(m => m.CourseName).ToList();
                 return View(student);
             }
         }
+
+        [HttpGet]
+
+        public IActionResult Delete(int id)
+        {
+            var student = context.Students.Find(id);
+            return View(student);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Student student)
+        {
+            context.Students.Remove(student);
+            context.SaveChanges();
+            return RedirectToAction("index", "Home");
+
+        }
     }
-}
+ 
+} 
